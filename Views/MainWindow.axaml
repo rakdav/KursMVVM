@@ -1,0 +1,97 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:KursMVVM.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="KursMVVM.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="{Binding Title}"
+		xmlns:converters="clr-namespace:KursMVVM.Converters">
+	<Window.Resources>
+		<converters:ViewModelToViewConverter x:Key="ViewModelToViewConverter"/>
+	</Window.Resources>
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	<Window.Styles>
+		<Style Selector="Button TextBlock">
+			<Setter Property="Foreground" Value="White" />
+		</Style>
+		<Style Selector="Button:pointerover TextBlock">
+			<Setter Property="Foreground" Value="Red" />
+		</Style>
+	</Window.Styles>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"/>
+			<ColumnDefinition Width="7*"/>
+		</Grid.ColumnDefinitions>
+		<StackPanel Background="Black"
+					Grid.Column="0">
+
+			<Button Margin="5"
+				Command="{Binding Navigate}"
+				CommandParameter="Home"
+				Height="50">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/home.png"/>
+					<TextBlock Text="Главная"
+							   VerticalAlignment="Center"
+							   Padding="10"/>
+				</StackPanel>
+			</Button>
+
+			<Button Content="Продукты"
+                    Margin="5" Height="50"
+                    Command="{Binding Navigate}"
+                    CommandParameter="Products">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/products.png"/>
+					<TextBlock Text="Продукты" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button>
+
+			<Button Content="Клиенты"
+                    Margin="5" Height="50"
+                    Command="{Binding Navigate}"
+                    CommandParameter="Clients">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/clients.png"/>
+					<TextBlock Text="Клиенты" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button>
+			<Button Content="Заказы"
+                    Height="50"
+                    Margin="5"
+                    Command="{Binding Navigate}"
+                    CommandParameter="Orders">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/orders.png"/>
+					<TextBlock Text="Заказы" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button>
+			<Button	Margin="5" Height="50"
+				   Command="{Binding Navigate}"
+				   CommandParameter="Reports">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/reports.png"/>
+					<TextBlock Text="Отчеты" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button>
+			<Button	Margin="5" Height="50"
+					Command="{Binding Navigate}"
+					CommandParameter="Graphics">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/graphics.png"/>
+					<TextBlock Text="Графики" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button> 
+		</StackPanel>
+
+		<Border Background="White" Grid.Column="1">
+			<ContentControl Content="{Binding CurrentPage, Converter={StaticResource ViewModelToViewConverter}}"/>
+		</Border>
+	</Grid>
+</Window>

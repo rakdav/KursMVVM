@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="using:KursMVVM.ViewModels"
+			 xmlns:lvc="using:LiveChartsCore.SkiaSharpView.Avalonia"
+             x:Class="KursMVVM.GraphPageView"
+			 x:DataType="vm:GraphPageViewModel">
+	<UserControl.DataContext>
+		<vm:GraphPageViewModel/>
+	</UserControl.DataContext>
+	<lvc:CartesianChart
+        LegendPosition="Right">
+		<lvc:CartesianChart.Series>
+			<lvc:XamlLineSeries
+                SeriesName="Mary"
+                Values="{lvc:Values FromString='5, 10, 8, 4'}"/>
+			<lvc:XamlColumnSeries
+                SeriesName="Ana"
+                Values="{lvc:Values FromString='4, 7, 3, 8'}"/>
+		</lvc:CartesianChart.Series>
+	</lvc:CartesianChart>
+
+</UserControl>

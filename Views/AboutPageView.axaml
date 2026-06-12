@@ -1,0 +1,60 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:iac="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+             xmlns:vm="using:KursMVVM.ViewModels"
+			 xmlns:model="using:KursMVVM.Models"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="KursMVVM.AboutPageView"
+			 x:DataType="vm:ClientsPageViewModel">
+	<Design.DataContext>
+		<vm:ClientsPageViewModel/>
+	</Design.DataContext>
+	<UserControl.Resources>
+		<DataTemplate x:Key="clientsTemplate" DataType="model:Client">
+			<StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{Binding Surname}"/>
+					<TextBlock Text=" "/>
+					<TextBlock Text="{Binding FirstName}"/>
+					<TextBlock Text=" "/>
+					<TextBlock Text="{Binding LastName}"/>
+				</StackPanel>
+				<TextBlock Text="{Binding Phone}"/>
+				<StackPanel Orientation="Horizontal">
+				</StackPanel>
+			</StackPanel>
+		</DataTemplate>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="8*"/>
+			<RowDefinition Height="1*"/>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+			<Button Command="{Binding LoadCommand}">
+				<Image Source="avares://KursMVVM/Assets/down.png"/>
+			</Button>
+			<Button Command="{Binding UploadCommand}">
+				<Image Source="avares://KursMVVM/Assets/up.png"/>
+			</Button>
+		</StackPanel>
+		<ListBox Grid.Row="1" ItemsSource="{Binding Clients}"
+				 ItemTemplate="{StaticResource clientsTemplate}"
+				 SelectedItem="{Binding SelectedClient}"/>
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<Button Content="Добавить" 
+				HorizontalAlignment="Right" Margin="10 0"
+				Command="{Binding AddCommand}"/>
+			<Button Content="Редактировать"
+				HorizontalAlignment="Right" Margin="10 0"
+				Command="{Binding EditCommand}" CommandParameter="{Binding SelectedClient}"/>
+			<Button Content="Удалить"
+				HorizontalAlignment="Right" Margin="10 0"
+				Command="{Binding DeleteCommand}" CommandParameter="{Binding SelectedClient}"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

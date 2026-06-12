@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="KursMVVM.OrdersPageView"
+			 xmlns:convert="using:KursMVVM.Converters"
+			 xmlns:model="using:KursMVVM.Models"
+			 xmlns:vm="using:KursMVVM.ViewModels"
+			 x:DataType="vm:OrdersPageViewModel">
+	<Design.DataContext>
+		<vm:OrdersPageViewModel/>
+	</Design.DataContext>
+	<UserControl.Resources>
+		<convert:IdProductToNameProduct x:Key="myProductConverter"/>
+		<convert:IdClientToFIO x:Key="myClientConverter"/>
+		<DataTemplate x:Key="orderTemplate" DataType="model:Order">
+			<StackPanel>
+				<TextBlock Text="{Binding IdProduct,Converter={StaticResource myProductConverter}}"/>
+				<TextBlock Text=" "/>
+				<TextBlock Text="{Binding IdClient,Converter={StaticResource myClientConverter}}"/>
+				<TextBlock Text=" "/>
+				<TextBlock Text="{Binding Quantity}"/>
+			</StackPanel>
+		</DataTemplate>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="1*"/>
+			<RowDefinition Height="8*"/>
+			<RowDefinition Height="1*"/>
+		</Grid.RowDefinitions>
+		<ListBox Grid.Row="1" ItemsSource="{Binding Orders}"
+				 ItemTemplate="{StaticResource orderTemplate}"
+				 SelectedItem="{Binding SelectedOrder}"/>
+		<StackPanel Grid.Row="2" Orientation="Horizontal">
+			<Button Content="Добавить"
+				HorizontalAlignment="Right" Margin="10 0"
+				Command="{Binding AddCommand}"/>
+		</StackPanel>
+	</Grid>
+</UserControl>
