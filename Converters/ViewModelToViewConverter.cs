@@ -19,7 +19,8 @@ namespace KursMVVM.Converters
                 OrdersPageViewModel=>new OrdersPageView { DataContext = value },
                 GraphPageViewModel=>new GraphPageView { DataContext = value },
                 ReportPageViewModel=>new ReportPageView {DataContext=value },
-                _=>null
+                DeliveryPageViewModel => new DeliveryPageView { DataContext = value },
+                _ =>null
             };
         }
 

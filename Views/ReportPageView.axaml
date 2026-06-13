@@ -9,5 +9,63 @@
 	<Design.DataContext>
 		<vm:ReportPageViewModel/>
 	</Design.DataContext>
-	
+	<UserControl.Styles>
+		<Style Selector="TabItem">
+			<Setter Property="FontSize" Value="14"/>
+		</Style>
+	</UserControl.Styles>
+	<Grid>
+		<TabControl Margin="5">
+			<TabControl.Template>
+				<ControlTemplate TargetType="TabControl">
+					<DockPanel>
+						<ScrollViewer DockPanel.Dock="Top" 
+									  HorizontalScrollBarVisibility="Auto" 
+									  VerticalScrollBarVisibility="Disabled">
+							<ItemsPresenter Name="PART_ItemsPresenter" 
+											ItemsPanel="{TemplateBinding ItemsPanel}"/>
+						</ScrollViewer>
+						<ContentPresenter Name="PART_SelectedContentHost"
+										  Content="{TemplateBinding SelectedContent}"
+										  ContentTemplate="{TemplateBinding SelectedContentTemplate}"
+										  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+					</DockPanel>
+				</ControlTemplate>
+			</TabControl.Template>
+
+			<TabControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal" />
+				</ItemsPanelTemplate>
+			 </TabControl.ItemsPanel>
+			<TabItem Header="Сводный по заказам">
+				<DataGrid GridLinesVisibility="All"
+						  IsReadOnly="True"
+						  ItemsSource="{Binding FactOrders}"
+						  CanUserReorderColumns="True"
+						  CanUserResizeColumns="True"
+						  CanUserSortColumns="True"
+						  AutoGenerateColumns="False">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="Клиент" Binding="{Binding IdOrder}" Width="*"/>
+						<DataGridTextColumn Header="Продукт" Binding="{Binding IdDelivery}" Width="*"/>
+						<DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="Auto"/>
+					</DataGrid.Columns>
+				</DataGrid>
+			</TabItem>
+			<TabItem Header="Задолженность по поставкам">
+				<TextBlock Margin="5">This is tab 2 content</TextBlock>
+			</TabItem>
+			<TabItem Header="Рейтинг заказчиков">
+				<TextBlock Margin="5">This is tab 3 content</TextBlock>
+			</TabItem>
+			<TabItem Header="Движение товаров">
+				<TextBlock Margin="5">This is tab 4 content</TextBlock>
+			</TabItem>
+			<TabItem Header="Сводка по договорам">
+				<TextBlock Margin="5">This is tab 5 content</TextBlock>
+			</TabItem>
+		</TabControl>
+	</Grid>
 </UserControl>

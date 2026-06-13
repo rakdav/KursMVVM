@@ -21,6 +21,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _navigationService.RegisterPage("Orders", new OrdersPageViewModel());
         _navigationService.RegisterPage("Graphics", new GraphPageViewModel());
         _navigationService.RegisterPage("Reports", new ReportPageViewModel());
+        _navigationService.RegisterPage("Delivery", new DeliveryPageViewModel());
         // Переходим на главную страницу
         _navigationService.NavigateTo("Home");
         title = "Магазин";

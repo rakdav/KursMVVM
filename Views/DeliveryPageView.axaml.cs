@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace KursMVVM;
 
-public partial class OrdersPageView : UserControl
+public partial class DeliveryPageView : UserControl
 {
-    public OrdersPageView()
+    public DeliveryPageView()
     {
         InitializeComponent();
     }

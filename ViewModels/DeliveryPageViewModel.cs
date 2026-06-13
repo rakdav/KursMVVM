@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace KursMVVM.ViewModels
 {
-    public partial class ReportPageViewModel:ViewModelBase
+    public partial class DeliveryPageViewModel:ViewModelBase
     {
         private DaliveryPageService pageService;
         [ObservableProperty]
         private ObservableCollection<FactOrder> factOrders = new();
-        public ReportPageViewModel()
+        public DeliveryPageViewModel()
         {
             pageService = new DaliveryPageService();
             FactOrders = new ObservableCollection<FactOrder>(getOrders());

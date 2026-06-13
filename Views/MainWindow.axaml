@@ -43,8 +43,7 @@
 				</StackPanel>
 			</Button>
 
-			<Button Content="Продукты"
-                    Margin="5" Height="50"
+			<Button Margin="5" Height="50"
                     Command="{Binding Navigate}"
                     CommandParameter="Products">
 				<StackPanel Orientation="Horizontal">
@@ -53,8 +52,7 @@
 				</StackPanel>
 			</Button>
 
-			<Button Content="Клиенты"
-                    Margin="5" Height="50"
+			<Button Margin="5" Height="50"
                     Command="{Binding Navigate}"
                     CommandParameter="Clients">
 				<StackPanel Orientation="Horizontal">
@@ -62,14 +60,22 @@
 					<TextBlock Text="Клиенты" VerticalAlignment="Center" Padding="10"/>
 				</StackPanel>
 			</Button>
-			<Button Content="Заказы"
-                    Height="50"
+			<Button Height="50"
                     Margin="5"
                     Command="{Binding Navigate}"
                     CommandParameter="Orders">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="avares://KursMVVM/Assets/orders.png"/>
 					<TextBlock Text="Заказы" VerticalAlignment="Center" Padding="10"/>
+				</StackPanel>
+			</Button>
+			<Button Height="50"
+                    Margin="5"
+                    Command="{Binding Navigate}"
+                    CommandParameter="Delivery">
+				<StackPanel Orientation="Horizontal">
+					<Image Source="avares://KursMVVM/Assets/delivery.png"/>
+					<TextBlock Text="Доставка" VerticalAlignment="Center" Padding="10"/>
 				</StackPanel>
 			</Button>
 			<Button	Margin="5" Height="50"
