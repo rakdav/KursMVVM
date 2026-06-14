@@ -13,16 +13,7 @@
 	<StackPanel Orientation="Horizontal">
 		<TabControl Margin="5">
 			<TabItem Header="План" >
-				<lvc:CartesianChart LegendPosition="Right">
-					<lvc:CartesianChart.Series>
-						<lvc:XamlLineSeries
-							SeriesName="Mary"
-							Values="{lvc:Values FromString='5, 10, 8, 4'}"/>
-						<lvc:XamlColumnSeries
-							SeriesName="Ana"
-							Values="{lvc:Values FromString='4, 7, 3, 8'}"/>
-					</lvc:CartesianChart.Series>
-				</lvc:CartesianChart>
+				<lvc:CartesianChart Series="{Binding SeriesCollection}"/>
 			</TabItem>
 			<TabItem Header="Доля">
 				<TextBlock Margin="5">This is tab 2 content</TextBlock>
