@@ -15,11 +15,17 @@ namespace KursMVVM.Converters
             int fact;
             int.TryParse(values[0]?.ToString(), out plan);
             int.TryParse(values[1]?.ToString(), out fact);
-            if(plan != 0)
+
+            try
             {
-                if(((double)fact / plan)>100) return new SolidColorBrush(Colors.Green);
-                else if (((double)fact / plan)>=90&& ((double)fact / plan)<=100) 
-                    return new SolidColorBrush(Colors.Yellow);
+                if (((double)fact / plan)*100 > 100)
+                    return new SolidColorBrush(Colors.Green);
+                else if (((double)fact / plan)*100 >= 90 && ((double)fact / plan)*100 <= 100)
+                    return new SolidColorBrush(Colors.Blue);
+            }
+            catch (Exception ex)
+            {
+                
             }
             return new SolidColorBrush(Colors.Red);
         }
